@@ -44,7 +44,7 @@ public class PostController {
         if(existingPost.isPresent()){
             Post updatedPost = new Post(
                     existingPost.get().id(),
-                    existingPost.get().userId(),
+                    existingPost.get().userid(),
                     post.title(),
                     post.title(),
                     existingPost.get().version()
