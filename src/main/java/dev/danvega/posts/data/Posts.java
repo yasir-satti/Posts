@@ -1,4 +1,6 @@
 package dev.danvega.posts.data;
 
-public record Posts() {
+import java.util.List;
+
+public record Posts(List<Post> posts) {
 }
