@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.actuate.autoconfigure.endpoint.condition.ConditionalOnAvailableEndpoint;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.stereotype.Component;
 
 import dev.danvega.posts.repository.PostRepository;
@@ -13,7 +15,7 @@ import dev.danvega.posts.data.Posts;
 import java.io.IOException;
 import java.io.InputStream;
 
-@Component
+@Component()
 class PostDataLoader implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(PostDataLoader.class);

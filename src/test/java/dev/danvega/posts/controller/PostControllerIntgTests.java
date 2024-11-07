@@ -1,28 +1,33 @@
-package dev.danvega.posts.repository;
+package dev.danvega.posts.controller;
 
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.HostConfig;
 import com.github.dockerjava.api.model.PortBinding;
 import com.github.dockerjava.api.model.Ports;
+
 import dev.danvega.posts.data.Post;
-import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.context.ActiveProfiles;
+
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
+
+import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @Testcontainers
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostRepositoryIntgTests {
+public class PostControllerIntgTests {
 
     @Container
     @ServiceConnection
@@ -42,18 +47,13 @@ public class PostRepositoryIntgTests {
             );
 
     @Autowired
-    PostRepository postRepository;
+    TestRestTemplate testRestTemplate;
+
+    final int NUMBER_OF_POSTS = 100;
 
     @Test
-    void dbConnectionEstablished() {
-        assertThat(postgres.isCreated()).isTrue();
-        assertThat(postgres.isRunning()).isTrue();
-    }
-
-    @Test
-    void shouldReturnAllPosts() {
-        List<Post> posts = postRepository.findAll();
-        assertThat(posts).isNotNull();
-        assertThat(posts.size()).isEqualTo(100);
+    void shouldFindAllPosts() {
+        Post[] posts = testRestTemplate.getForObject("/api/posts", Post[].class);
+        assertThat(posts.length).isEqualTo(NUMBER_OF_POSTS);
     }
 }
