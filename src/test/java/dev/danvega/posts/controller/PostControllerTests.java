@@ -50,14 +50,14 @@ public class PostControllerTests {
                 [
                     {
                         "id":1,
-                        "userId":1,
+                        "userid":1,
                         "title":"Hello, World!",
                         "body":"This is my first post.",
                         "version": null
                     },
                     {
                         "id":2,
-                        "userId":1,
+                        "userid":1,
                         "title":"Second Post",
                         "body":"This is my second post.",
                         "version": null
@@ -79,7 +79,7 @@ public class PostControllerTests {
         var jsonResponse = STR."""
                             {
                                 "id":\{post.id()},
-                                "userId":\{post.userId()},
+                                "userid":\{post.userid()},
                                 "title":"\{post.title()}",
                                 "body":"\{post.body()}",
                                 "version": null
@@ -115,7 +115,7 @@ public class PostControllerTests {
         var jsonContent = STR."""
                                             {
                                                 "id":\{post.id()},
-                                                "userId":\{post.userId()},
+                                                "userid":\{post.userid()},
                                                 "title":"\{post.title()}",
                                                 "body":"\{post.body()}",
                                                 "version": null
@@ -141,7 +141,7 @@ public class PostControllerTests {
         var jsonContent = STR."""
                                             {
                                                 "id":\{post.id()},
-                                                "userId":\{post.userId()},
+                                                "userid":\{post.userid()},
                                                 "title":"\{post.title()}",
                                                 "body":"\{post.body()}",
                                                 "version": null
@@ -167,7 +167,7 @@ public class PostControllerTests {
         var jsonContent = STR."""
                                             {
                                                 "id":\{updatedPost.id()},
-                                                "userId":\{updatedPost.userId()},
+                                                "userid":\{updatedPost.userid()},
                                                 "title":"\{updatedPost.title()}",
                                                 "body":"\{updatedPost.body()}",
                                                 "version":"\{updatedPost.version()}"
@@ -191,7 +191,7 @@ public class PostControllerTests {
         var jsonContent = STR."""
                                             {
                                                 "id":\{updatedPost.id()},
-                                                "userId":\{updatedPost.userId()},
+                                                "userid":\{updatedPost.userid()},
                                                 "title":"\{updatedPost.title()}",
                                                 "body":"\{updatedPost.body()}",
                                                 "version":"\{updatedPost.version()}"
@@ -232,7 +232,7 @@ public class PostControllerTests {
         var jsonContent = STR."""
                                             {
                                                 "id":\{updatedPost.id()},
-                                                "userId":\{updatedPost.userId()},
+                                                "userid":\{updatedPost.userid()},
                                                 "title":"\{updatedPost.title()}",
                                                 "body":"\{updatedPost.body()}",
                                                 "version":"\{updatedPost.version()}"
